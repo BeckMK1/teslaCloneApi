@@ -2,20 +2,10 @@ const express = require('express');
 const router = express.Router()
 const Model = require('../models/products');
 module.exports = router
-
 //POST
 router.post('/post', async (req, res) => {
     const data = new Model({
-        title: req.body.title,
-        subTitle: req.body.subTitle,
-        titleInfo: req.body.titleInfo,
-        price: req.body.price,
-        normalPrice: req.body.normalPrice,
-        isDemo: req.body.isDemo,
-        images: req.body.images,
-        mainSpec1: req.body.mainSpec1,
-        mainSpec2: req.body.mainSpec2,
-        mainSpec3: req.body.mainSpec3,
+        porducts: req.body.porducts,
 
     })
     try {
