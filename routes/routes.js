@@ -5,7 +5,7 @@ module.exports = router
 //POST
 router.post('/post', async (req, res) => {
     const data = new Model({
-        porducts: req.body.porducts,
+        porduct: req.body,
 
     })
     try {
