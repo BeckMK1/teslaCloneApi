@@ -38,7 +38,7 @@ router.get('/getOne/:id', async (req, res) =>{
    }
 })
 // Update by ID
-router.patch('/upadate/:id', async (req, res)=>{
+router.patch('/upadateProduct/:id', async (req, res)=>{
     try{
         const id = req.params.id;
         const updatedData = req.body;
@@ -54,7 +54,7 @@ router.patch('/upadate/:id', async (req, res)=>{
     }
 })
 // Delete by ID
-router.delete('/delete/:id', async (req, res)=>{
+router.delete('/deleteProduct/:id', async (req, res)=>{
   try{
     const id = req.params.id;
     const data = await Model.findByIdAndDelete(id)
@@ -103,3 +103,14 @@ router.patch('/upadateSlide/:id', async (req, res)=>{
         res.status(400).json({message:error.message})
     }
 })
+// Delete by ID
+router.delete('/deleteSlide/:id', async (req, res)=>{
+    try{
+      const id = req.params.id;
+      const data = await SlideModel.findByIdAndDelete(id)
+      res.send(`document with ${data.name} has been deleted..`)
+    }
+    catch(error){
+      res.status(400).json({message:error.message})
+    }
+  })
