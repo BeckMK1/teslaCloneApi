@@ -28,9 +28,11 @@ router.get('/getAll', async (req, res) =>{
  }
 })
 // Get by ID
-router.get('/getOne/:id', async (req, res) =>{
+router.get('/getOne', async (req, res) =>{
    try{
-        const data = await Model.findById(req.params.id);
+        const data = await Model.find(product => {
+            return product.filterValues.includes(req.query.parm1)
+        });
         res.json(data)
    }
    catch(error){
