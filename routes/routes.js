@@ -30,10 +30,14 @@ router.get('/getAll', async (req, res) =>{
 // Get by ID
 router.get('/getOne', async (req, res) =>{
    try{
-        const data = await Model.find(product => {
-            return product.filterValues.includes(req.query.parm1)
-        });
-        res.json(data)
+        let productsFilter = req.query.filters
+        const data = await Model.find();
+        let filter = productsFilter.split(",")
+        let filterArray = filter.filter((el)=>{
+            return el != ""
+        })
+        // console.log(data.filter((product) => filterArray.every(v => product.porduct.filters.includes(v))))
+        res.json(data.filter((product) =>  filterArray.every(v => product.porduct.filters.includes(v))))
    }
    catch(error){
     res.status(500).json({message: error.message})
