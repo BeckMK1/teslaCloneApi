@@ -1,4 +1,4 @@
-# start dev server
+# Start dev server
 ```bash
 #npm
 npm start
