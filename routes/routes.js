@@ -28,6 +28,16 @@ router.get('/getAll', async (req, res) =>{
  }
 })
 // Get by ID
+router.get('/getId/:id', async (req, res) =>{
+    try{
+       const id = req.params.id;
+       const data = await Model.findById(id)
+       res.json(data)
+    } catch(error){
+       res.status(500).json({message: error.message})
+    }
+   })
+// Get by filter
 router.get('/getOne', async (req, res) =>{
    try{
         let productsFilter = req.query.filters
@@ -36,7 +46,6 @@ router.get('/getOne', async (req, res) =>{
         let filterArray = filter.filter((el)=>{
             return el != ""
         })
-        // console.log(data.filter((product) => filterArray.every(v => product.porduct.filters.includes(v))))
         res.json(data.filter((product) =>  filterArray.every(v => product.porduct.filters.includes(v))))
    }
    catch(error){
